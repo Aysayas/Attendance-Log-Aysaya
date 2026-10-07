@@ -25,7 +25,8 @@ function App() {
 
     async function loadRecords() {
       try {
-        const response = await fetch('/attendance.json')
+        // BASE_URL keeps the path correct when hosted under a subfolder
+        const response = await fetch(`${import.meta.env.BASE_URL}attendance.json`)
         if (!response.ok) {
           throw new Error(`Failed to load data (HTTP ${response.status})`)
         }
