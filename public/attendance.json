@@ -1,0 +1,10 @@
+[
+  { "id": 1, "studentId": "2023-0001", "name": "Juan Dela Cruz", "date": "2026-10-05", "status": "Present", "remarks": "" },
+  { "id": 2, "studentId": "2023-0002", "name": "Maria Santos", "date": "2026-10-05", "status": "Late", "remarks": "Arrived 10 minutes late" },
+  { "id": 3, "studentId": "2023-0003", "name": "Jose Rizal Reyes", "date": "2026-10-05", "status": "Absent", "remarks": "Sick" },
+  { "id": 4, "studentId": "2023-0004", "name": "Ana Mendoza", "date": "2026-10-05", "status": "Present", "remarks": "" },
+  { "id": 5, "studentId": "2023-0001", "name": "Juan Dela Cruz", "date": "2026-10-06", "status": "Present", "remarks": "" },
+  { "id": 6, "studentId": "2023-0002", "name": "Maria Santos", "date": "2026-10-06", "status": "Present", "remarks": "" },
+  { "id": 7, "studentId": "2023-0003", "name": "Jose Rizal Reyes", "date": "2026-10-06", "status": "Late", "remarks": "Traffic" },
+  { "id": 8, "studentId": "2023-0004", "name": "Ana Mendoza", "date": "2026-10-06", "status": "Absent", "remarks": "Family emergency" }
+]
