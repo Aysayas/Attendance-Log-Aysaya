@@ -1,16 +1,57 @@
-# React + Vite
+# Attendance Logger
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A CRUD-style React app for recording student attendance (Present / Late / Absent).
 
-Currently, two official plugins are available:
+Built for **ITP313 – Event-Driven Programming** (Activity: Asynchronous Programming Patterns).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Create** – log a student's attendance using the form
+- **Read** – view all records in a table, loaded from `public/attendance.json`
+- **Update** – click **Edit** on a row to load it into the form, then **Update**
+- **Delete** – click **Delete** on a row (asks for confirmation)
+- **Search** by name or student ID
+- **Filter** by status and by date
+- **Summary** counts of Present / Late / Absent for the records currently shown
+- **Validation** – required fields, and no duplicate entry for the same student on the same date
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How the activity requirements are met
 
-## Expanding the Oxlint configuration
+| Requirement | Where |
+|---|---|
+| At least 3 components (Parent + 2 children) | `App` (parent) → `AttendanceForm`, `AttendanceList`, `AttendanceFilters`, `AttendanceSummary` (children) → `AttendanceItem` (child of `AttendanceList`) |
+| `useState` to manage data | `App.jsx` – `records`, `loading`, `error`, `editingRecord`, search/filter values |
+| `useState` to manage forms | `AttendanceForm.jsx` – `formData` (controlled inputs) and `error` |
+| `useEffect` to load JSON file | `App.jsx` – fetches `/attendance.json` once on mount with `async/await`, handles loading and error states |
+| props to pass data | `records`, `editingRecord`, `editingId`, filter values passed down from `App` |
+| props to pass functions | `onAdd`, `onUpdate`, `onCancelEdit`, `onEdit`, `onDelete`, `onSearchChange`, `onStatusChange`, `onDateChange`, `onClear` |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Project structure
+
+```
+public/
+  attendance.json          Seed data loaded by useEffect
+src/
+  App.jsx                  Parent: state, data loading, CRUD handlers, filtering
+  components/
+    AttendanceForm.jsx     Add / edit form
+    AttendanceList.jsx     Table of records
+    AttendanceItem.jsx     One table row with Edit / Delete buttons
+    AttendanceFilters.jsx  Search, status and date filters
+    AttendanceSummary.jsx  Present / Late / Absent counts
+  App.css, index.css       Styles
+```
+
+## Running the app
+
+Requires [Node.js](https://nodejs.org/).
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the URL shown in the terminal (usually http://localhost:5173).
+
+> **Note:** Changes are kept in React state only. Browsers cannot write back to
+> `attendance.json`, so refreshing the page reloads the original data.

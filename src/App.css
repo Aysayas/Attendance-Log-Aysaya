@@ -199,6 +199,10 @@ textarea {
   background: var(--editing-bg);
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 .remarks {
   color: var(--muted);
 }
@@ -246,11 +250,13 @@ textarea {
   color: var(--danger);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .app-main {
     grid-template-columns: 1fr;
   }
+}
 
+@media (max-width: 600px) {
   .summary {
     grid-template-columns: repeat(2, 1fr);
   }
